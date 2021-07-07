@@ -45,6 +45,12 @@ export default function NFTToken(props) {
 	const [openPurchase, setOpenPurchase] = useState(false);
 	const [openTransfer, setOpenTransfer] = useState(false);
 	const base32UIAddress = cryptography.getBase32AddressFromAddress(Buffer.from(props.item.ownerAddress, 'hex'), 'lsk').toString('binary');
+	
+	var base32CreatorAddress = null;
+	if ("creatorAddress" in props.item && props.item["creatorAddress"] != null && props.item["creatorAddress"].length > 30){
+		base32CreatorAddress = cryptography.getBase32AddressFromAddress(Buffer.from(props.item.creatorAddress, 'hex'), 'lsk').toString('binary');
+	}
+	
 	return (
 		<Card>
 			<CardContent>
@@ -64,13 +70,24 @@ export default function NFTToken(props) {
 					<dd>{props.item.minPurchaseMargin}</dd>
 				</li>
 				<li>
-					<dt>Creator</dt>
+					<dt>Owner</dt>
 					<dd>
 						<Link
 						component={RouterLink}
 						to={`/accounts/${base32UIAddress}`}
 						>
 						{base32UIAddress}
+						</Link>
+					</dd>
+				</li>
+				<li>
+					<dt>Creator</dt>
+					<dd>
+						<Link
+						component={RouterLink}
+						to={`/accounts/${base32CreatorAddress}`}
+						>
+						{base32CreatorAddress}
 						</Link>
 					</dd>
 				</li>
@@ -85,7 +102,7 @@ export default function NFTToken(props) {
 				</li>
 				{!props.minimum && (
 					<li>
-					<dt>Owner</dt>
+					<dt>Minimum stuff</dt>
 					<dd>
 						<Link
 						component={RouterLink}

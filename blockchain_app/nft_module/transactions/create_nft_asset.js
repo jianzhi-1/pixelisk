@@ -58,6 +58,7 @@ class CreateNFTAsset extends BaseAsset {
 			nonce: transaction.nonce,
 			value: asset.initValue,
 			minPurchaseMargin: asset.minPurchaseMargin,
+			creatorAddress: senderAddress, //you are creating, so you are creator
 			imgData: asset.imgData
 		});
 

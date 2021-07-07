@@ -60,6 +60,9 @@ export default function Account(props) {
 		fetchData2();
 	}, []);
 
+	console.log("NFT TOKENS HERE")
+	console.log(nftTokens);
+
 	return (
 		<Container>
 			<Typography variant="h5">{base32UIAddress}</Typography>
