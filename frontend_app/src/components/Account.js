@@ -32,6 +32,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Account(props) {
 	const [nftTokens, setNftTokens] = useState([]);
+	const [mapper, setMapper] = useState([]);
 	const classes = useStyles();
 	const base32UIAddress = cryptography.getBase32AddressFromAddress(Buffer.from(props.account.address, 'hex'), 'lsk').toString('binary');
 
@@ -44,9 +45,28 @@ export default function Account(props) {
 		fetchData();
 	}, [props.account.nft.ownNFTs]);
 
+	useEffect(() => {
+		async function fetchData2() {
+			setMapper(await fetch('http://localhost:8000/all')
+			.then(response => {
+				if(response.status == 200) return response.json();
+				else return [];
+			}).then(obj => {
+				var xx = {};
+				for (let i = 0; i < obj['data'].length; i++) xx[obj['data'][i]['token']] = obj['data'][i]['data'];
+				return xx;
+			}));
+		}
+		fetchData2();
+	}, []);
+
 	return (
 		<Container>
 			<Typography variant="h5">{base32UIAddress}</Typography>
+			{base32UIAddress=="lskwwmtg88fyv7sg52t2r45sm7p4r8guk5wwq8bb5"?
+			<h1>The Judge</h1>
+			:
+			null}
 			<Divider />
 			<dl className={classes.propertyList}>
 				<li>
@@ -66,7 +86,11 @@ export default function Account(props) {
 			<Grid container spacing={4}>
 				{nftTokens.map((item) => (
 					<Grid item md={3}>
-						<NFTToken item={item} key={item.address} minimum={true} />
+						{(item.id in mapper)?
+						<NFTToken item={item} key={item.id} img={mapper[item.id]} minimum={true} />
+						:
+						<NFTToken item={item} key={item.id} minimum={true}/>
+						}
 					</Grid>
 				))}
 			</Grid>

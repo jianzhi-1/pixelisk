@@ -37,6 +37,20 @@ export default function DrawingPanel(props) {
 		<div id="pixels" ref={panelRef}>
 			{rows}
 		</div>
+
+		<button onClick={(e) => {
+				var x = html2canvas(ReactDOM.findDOMNode(panelRef.current),
+					{scrollY: -window.scrollY, useCORS: true,})
+				.then(canvas => {
+					var y = canvas.toDataURL('image/png', 1.0)
+					changeParent(y);
+					return canvas;
+				});
+				e.stopPropagation();
+				e.preventDefault();
+			}} className="button">
+			save
+		</button>
 		
 		<button onClick={(e) => {console.log(e);exportComponentAsPNG(panelRef);
 			console.log(panelRef);
@@ -49,7 +63,7 @@ export default function DrawingPanel(props) {
 					return canvas;});
 			console.log("x: ",x);
 			e.stopPropagation();e.preventDefault()}} className="button">
-			save a copy
+			save to local
 		</button>
 		</div>
 	);

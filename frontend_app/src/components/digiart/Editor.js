@@ -30,12 +30,7 @@ export default function Editor(props) {
 
 	return (
 		<div id="editor">
-			<h1>Pixel Editor</h1>
-
-			<button onClick={(e) => {initializeDrawingPanel();e.stopPropagation();e.preventDefault()}} className="button">
-				{buttonText}
-			</button>
-
+			<h1>Design your DigiArt below!</h1>
 			<CirclePicker color={selectedColor} onChangeComplete={changeColor} />
 
 			<DrawingPanel

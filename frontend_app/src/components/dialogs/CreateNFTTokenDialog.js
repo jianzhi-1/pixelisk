@@ -21,8 +21,6 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-const datad = require("./sample.json")
-
 export default function CreateNFTTokenDialog(props) {
 	const nodeInfo = useContext(NodeInfoContext);
 	const classes = useStyles();
@@ -63,7 +61,7 @@ export default function CreateNFTTokenDialog(props) {
 	return (
 		<Fragment>
 			<Dialog open={props.open} onBackdropClick={props.handleClose}>
-				<DialogTitle id="alert-dialog-title">{"Create NFT"}</DialogTitle>
+				<DialogTitle id="alert-dialog-title">{"Create Digi"}</DialogTitle>
 				<DialogContent>
 					<form className={classes.root} noValidate autoComplete="off">
 						<TextField
@@ -74,12 +72,8 @@ export default function CreateNFTTokenDialog(props) {
 						fullWidth
 						/>
 
-						<Editor
-						changeParent={handleImgChange}
-						/>
-
 						<TextField
-						label="Initial Token value"
+						label="Initial value"
 						value={data.initValue}
 						name="initValue"
 						onChange={handleChange}
@@ -109,12 +103,16 @@ export default function CreateNFTTokenDialog(props) {
 						onChange={handleChange}
 						fullWidth
 						/>
-						<img src={`${datad}`}/>
+
+						<Editor
+						changeParent={handleImgChange}
+						/>
+
 					</form>
 				</DialogContent>
 
 				<DialogActions>
-					<Button onClick={handleSend}>Create NFT</Button>
+					<Button onClick={handleSend}>Create Digi</Button>
 				</DialogActions>
 
 			</Dialog>

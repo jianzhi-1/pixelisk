@@ -118,6 +118,13 @@ function App() {
 							className={classes.appBarLink}
 							> Transactions </Link>
 
+							<Link
+							color="inherit"
+							component={RouterLink}
+							to="/accounts/lskwwmtg88fyv7sg52t2r45sm7p4r8guk5wwq8bb5"
+							className={classes.appBarLink}
+							> The Judge </Link>
+
 							<div className={classes.grow} />
 
 							<Chip label={nodeInfoState.height} />
