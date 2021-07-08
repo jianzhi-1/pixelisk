@@ -39,9 +39,9 @@ function HomePage() {
 				{NFTAccounts.map((item) => (
 					<Grid item md={4}>
 						{(item.id in mapper)?
-						<NFTToken item={item} key={item.id} img={mapper[item.id]} />
+						<NFTToken item={item} key={item.id} minimum={true} img={mapper[item.id]} />
 						:
-						<NFTToken item={item} key={item.id} />
+						<NFTToken item={item} key={item.id} minimum={true} />
 						}
 					</Grid>
 				))}

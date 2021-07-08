@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../../styles/editor.scss";
-import { CirclePicker } from "react-color";
+import { CompactPicker, CirclePicker } from "react-color";
 import DrawingPanel from "./DrawingPanel";
 
 export default function Editor(props) {
@@ -29,10 +29,11 @@ export default function Editor(props) {
 	}
 
 	return (
-		<div id="editor">
-			<h1>Design your DigiArt below!</h1>
-			<CirclePicker color={selectedColor} onChangeComplete={changeColor} />
-
+		<div id="editor" style={{backgroundColor:"#f2f3ff"}}>
+			<h3>Design your DigiArt below!</h3>
+			<CompactPicker color={selectedColor} onChangeComplete={changeColor} />
+			<br></br>
+			<br></br>
 			<DrawingPanel
 				width={panelWidth}
 				height={panelHeight}

@@ -4,6 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import {Buffer, cryptography, transactions} from "@liskhq/lisk-client";
 import NFTToken from "./NFTToken";
 import { fetchNFTToken } from "../api";
+const collector = require('../public/collector200.png');
 
 const useStyles = makeStyles((theme) => ({
 	propertyList: {
@@ -69,7 +70,11 @@ export default function Account(props) {
 		<Container>
 			<Typography variant="h5">{base32UIAddress}</Typography>
 			{judge?
-			<h1>The Judge</h1>
+			<div>
+				<h1>The Collector</h1>
+				<img src={collector} width={200}/>
+				<br></br>
+			</div>
 			:
 			null}
 			<Divider />
@@ -92,9 +97,9 @@ export default function Account(props) {
 				{nftTokens.map((item) => (
 					<Grid item md={3}>
 						{(item.id in mapper)?
-						<NFTToken item={item} key={item.id} img={mapper[item.id]} minimum={true} judge={judge} />
+						<NFTToken item={item} key={item.id} img={mapper[item.id]} judge={judge} />
 						:
-						<NFTToken item={item} key={item.id} minimum={true} judge={judge}/>
+						<NFTToken item={item} key={item.id} judge={judge}/>
 						}
 					</Grid>
 				))}

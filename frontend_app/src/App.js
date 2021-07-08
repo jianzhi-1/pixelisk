@@ -14,7 +14,7 @@ import {
 	Link,
 	IconButton,
 	Container,
-	Chip,
+	Chip
 } from '@material-ui/core';
 
 import { SpeedDial, SpeedDialIcon, SpeedDialAction } from '@material-ui/lab';
@@ -32,6 +32,7 @@ import AccountPage from './components/AccountPage';
 import CreateAccountDialog from './components/dialogs/CreateAccountDialog';
 import TransferFundsDialog from './components/dialogs/TransferFundsDialog';
 import CreateNFTTokenDialog from './components/dialogs/CreateNFTTokenDialog';
+const logo = require('./public/logo200.png');
 
 const useStyles = makeStyles((theme) => ({
 	appBarLink: {
@@ -39,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
 		flex: 1,
 	},
 	speedDial: {
-		position: 'absolute',
+		position: 'fixed',
 		bottom: theme.spacing(2),
 		right: theme.spacing(2),
 	},
@@ -99,9 +100,10 @@ function App() {
 						<Toolbar>
 
 							<IconButton edge="start" color="inherit" aria-label="menu">
-								<MenuIcon />
+								{/*<MenuIcon />*/}
+								<img src={logo} width={40}/>
 							</IconButton>
-
+							
 							<Typography variant="h6">DigiArt</Typography>
 
 							<Link
@@ -123,7 +125,7 @@ function App() {
 							component={RouterLink}
 							to="/accounts/lskwwmtg88fyv7sg52t2r45sm7p4r8guk5wwq8bb5"
 							className={classes.appBarLink}
-							> The Judge </Link>
+							> The Collector </Link>
 
 							<div className={classes.grow} />
 

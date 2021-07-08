@@ -9,30 +9,26 @@ const ReclaimNFTAsset = require("./transactions/reclaim_nft_asset");
 
 // Extend from the base module to implement the NFT module
 class NFTModule extends BaseModule {
-  name = "nft"; //module name
-  id = 1024; //module ID (unique within network, min value 1024)
-  accountSchema = {
-    type: "object",
-    required: ["ownNFTs"],
-    properties: {
-        //array of NFTs that this account owns
-      ownNFTs: {
-        type: "array",
-        fieldNumber: 1,
-        items: {
-          dataType: "bytes",
-        },
-      },
-    },
-    default: {
-      ownNFTs: [],
-    },
-  };
-  transactionAssets = [new CreateNFTAsset(), new PurchaseNFTAsset(), new TransferNFTAsset(), new VoteNFTAsset(), new ReclaimNFTAsset()];
-  actions = {
-    // get all the registered NFT tokens from blockchain
-    getAllNFTTokens: async () => getAllNFTTokensAsJSON(this._dataAccess),
-  };
+	name = "nft"; //module name
+	id = 1024; //module ID (unique within network, min value 1024)
+	accountSchema = {
+		type: "object",
+		required: ["ownNFTs"],
+		properties: {
+			//array of NFTs that this account owns
+			ownNFTs: {
+				type: "array",
+				fieldNumber: 1,
+				items: { dataType: "bytes", },
+			},
+		},
+		default: { ownNFTs: [], },
+	};
+	transactionAssets = [new CreateNFTAsset(), new PurchaseNFTAsset(), new TransferNFTAsset(), new VoteNFTAsset(), new ReclaimNFTAsset()];
+	actions = {
+		// get all the registered NFT tokens from blockchain
+		getAllNFTTokens: async () => getAllNFTTokensAsJSON(this._dataAccess),
+	};
 }
 
 module.exports = { NFTModule };

@@ -4,6 +4,9 @@ import Row from "./Row";
 import { exportComponentAsPNG } from "react-component-export-image";
 import html2canvas from 'html2canvas';
 import ReactDOM from 'react-dom';
+import {
+	Button,
+} from "@material-ui/core";
 
 const saveAs = (uri, filename) => {
     const link = document.createElement('a');
@@ -34,37 +37,45 @@ export default function DrawingPanel(props) {
 
 	return (
 		<div id="drawingPanel">
-		<div id="pixels" ref={panelRef}>
-			{rows}
-		</div>
+			<div id="pixels" ref={panelRef}>
+				{rows}
+			</div>
 
-		<button onClick={(e) => {
-				var x = html2canvas(ReactDOM.findDOMNode(panelRef.current),
-					{scrollY: -window.scrollY, useCORS: true,})
-				.then(canvas => {
-					var y = canvas.toDataURL('image/png', 1.0)
-					changeParent(y);
-					return canvas;
-				});
-				e.stopPropagation();
-				e.preventDefault();
-			}} className="button">
-			save
-		</button>
-		
-		<button onClick={(e) => {console.log(e);exportComponentAsPNG(panelRef);
-			console.log(panelRef);
-			var x = html2canvas(ReactDOM.findDOMNode(panelRef.current), {        scrollY: -window.scrollY,
-				useCORS: true,}).then(canvas => {
-					console.log(canvas);
-					var y = canvas.toDataURL('image/png', 1.0)
-					console.log("y: ", y);
-					changeParent(y);
-					return canvas;});
-			console.log("x: ",x);
-			e.stopPropagation();e.preventDefault()}} className="button">
-			save to local
-		</button>
+			<div>
+				<Button 
+				style={{marginRight:"10px"}}
+				variant="contained" 
+				onClick={(e) => {
+					var x = html2canvas(ReactDOM.findDOMNode(panelRef.current),
+						{scrollY: -window.scrollY, useCORS: true,})
+					.then(canvas => {
+						var y = canvas.toDataURL('image/png', 1.0)
+						changeParent(y);
+						return canvas;
+					});
+					e.stopPropagation();
+					e.preventDefault();
+				}}>
+					save
+				</Button>
+				
+				<Button 
+				variant="contained" 
+				onClick={(e) => {
+					exportComponentAsPNG(panelRef);
+					var x = html2canvas(ReactDOM.findDOMNode(panelRef.current), {
+						scrollY: -window.scrollY,useCORS: true,})
+					.then(canvas => {
+						var y = canvas.toDataURL('image/png', 1.0)
+						changeParent(y);
+						return canvas;});
+					e.stopPropagation();
+					e.preventDefault();
+				}}
+				>
+					save to local
+				</Button>
+			</div>
 		</div>
 	);
 }

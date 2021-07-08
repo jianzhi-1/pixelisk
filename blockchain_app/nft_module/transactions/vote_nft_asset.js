@@ -60,9 +60,9 @@ class VoteNFTAsset extends BaseAsset {
 		//bdcb3fbdfe889dbfaf13c492bd95c44c9ff85177
 		if (tokenOwnerAddress != "bdcb3fbdfe889dbfaf13c492bd95c44c9ff85177"){
 			console.log("NOT JUDGE!!!")
-			throw new Error("Vote cannot be sent to a person other than The Judge.")
+			throw new Error("Vote cannot be sent to a person other than The Collector.")
 		} else {
-			console.log("ACCEPTED - TOKEN BELONGS TO JUDGE");
+			console.log("Accepted - token belongs to The Collector");
 		}
 
 		//update the token value

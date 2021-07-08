@@ -7,6 +7,7 @@ import {
 	Link,
 	Divider,
 	Button,
+	Box
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { Link as RouterLink } from "react-router-dom";
@@ -48,6 +49,7 @@ export default function NFTToken(props) {
 	const [openTransfer, setOpenTransfer] = useState(false);
 	const [openVote, setOpenVote] = useState(false);
 	const [openReclaim, setOpenReclaim] = useState(false);
+	const [showDetails, setShowDetails] = useState(false);
 	const base32UIAddress = cryptography.getBase32AddressFromAddress(Buffer.from(props.item.ownerAddress, 'hex'), 'lsk').toString('binary');
 	
 	var base32CreatorAddress = "-";
@@ -62,41 +64,7 @@ export default function NFTToken(props) {
 				<Divider />
 				<dl className={classes.propertyList}>
 				<li>
-					<dt>Token ID</dt>
-					<dd>{props.item.id}</dd>
-				</li>
-				<li>
-					<dt>Token value</dt>
-					<dd>{transactions.convertBeddowsToLSK(props.item.value)}</dd>
-				</li>
-				<li>
-					<dt>Minimum Purchase Margin</dt>
-					<dd>{props.item.minPurchaseMargin}</dd>
-				</li>
-				<li>
-					<dt>Owner</dt>
-					<dd>
-						<Link
-						component={RouterLink}
-						to={`/accounts/${base32UIAddress}`}
-						>
-						{base32UIAddress}
-						</Link>
-					</dd>
-				</li>
-				<li>
-					<dt>Creator</dt>
-					<dd>
-						<Link
-						component={RouterLink}
-						to={`/accounts/${base32CreatorAddress}`}
-						>
-						{base32CreatorAddress}
-						</Link>
-					</dd>
-				</li>
-				<li>
-					<dt>Image</dt>
+					{/*<dt>Image</dt>*/}
 					{'img' in props?
 						<img src={props['img']}/>
 						:
@@ -104,7 +72,116 @@ export default function NFTToken(props) {
 					}
 					
 				</li>
-				{!props.minimum && (
+
+				<li>
+					<b>Digi value:</b> {transactions.convertBeddowsToLSK(props.item.value)} LSK
+					<dd></dd>
+				</li>
+
+				{!showDetails?
+				<li>
+					<dt>Owner</dt>
+					<Box 
+					textOverflow="ellipsis"
+					component="div"
+					overflow="auto"
+					>
+						<dd>
+							<Link
+							component={RouterLink}
+							to={`/accounts/${base32UIAddress}`}
+							>
+							{base32UIAddress}
+							</Link>
+						</dd>
+					</Box>
+				</li>
+				:null}
+
+				{!props.minimum?
+				<div>
+
+				{showDetails?
+				
+					<div>
+
+					{!props.minimum && (
+						<li>
+							<b>Min Purchase Margin:</b> {props.item.minPurchaseMargin} LSK
+							<dd></dd>
+						</li>
+					)}
+
+					<li>
+						<dt>Owner</dt>
+						<Box 
+						textOverflow="ellipsis"
+						component="div"
+						overflow="auto"
+						>
+							<dd>
+								<Link
+								component={RouterLink}
+								to={`/accounts/${base32UIAddress}`}
+								>
+								{base32UIAddress}
+								</Link>
+							</dd>
+						</Box>
+					</li>
+
+					{!props.minimum && (
+					<li>
+						<dt>Creator</dt>
+						<Box 
+						textOverflow="ellipsis"
+						component="div"
+						overflow="auto"
+						>
+							<dd>
+								<Link
+								component={RouterLink}
+								to={`/accounts/${base32CreatorAddress}`}
+								>
+								{base32CreatorAddress}
+								</Link>
+							</dd>
+						</Box>
+					</li>
+					)}
+
+					{!props.minimum && (
+						<li>
+							<dt>Digi ID</dt>
+							<Box 
+							textOverflow="ellipsis"
+							component="div"
+							overflow="auto"
+							>
+								<dd>
+								{props.item.id}
+								</dd>
+							</Box>
+							
+						</li>
+					)}
+					</div>
+				:
+					<li>
+						<Button onClick={() => setShowDetails(true)}>
+						Show Details
+						</Button>
+					</li>
+				}
+				</div>
+
+				:
+				null
+
+				}
+
+
+				{/*!props.minimum && (
 					<li>
 					<dt>Minimum stuff</dt>
 					<dd>
@@ -116,7 +193,7 @@ export default function NFTToken(props) {
 						</Link>
 					</dd>
 					</li>
-				)}
+				)*/}
 				</dl>
 
 				{/*
@@ -148,7 +225,7 @@ export default function NFTToken(props) {
 				color="primary"
 				onClick={() => {setOpenVote(true);}}
 				>
-					Vote NFT
+					Vote Digi
 				</Button>
 
 				<VoteNFTDialog
@@ -165,7 +242,7 @@ export default function NFTToken(props) {
 				color="primary"
 				onClick={() => {setOpenReclaim(true);}}
 				>
-					Reclaim NFT
+					Reclaim Digi
 				</Button>
 
 				<ReclaimNFTDialog
@@ -207,7 +284,7 @@ export default function NFTToken(props) {
 				color="primary"
 				onClick={() => {setOpenTransfer(true);}}
 				>
-					Transfer NFT
+					Transfer Digi
 				</Button>
 
 				<TransferNFTDialog
@@ -224,7 +301,7 @@ export default function NFTToken(props) {
 					color="primary"
 					onClick={() => {setOpenPurchase(true);}}
 					>
-						Purchase NFT
+						Purchase Digi
 					</Button>
 
 					<PurchaseNFTTokenDialog
