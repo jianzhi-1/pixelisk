@@ -12,6 +12,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { NodeInfoContext } from "../../context";
 import { reclaimNFT } from "../../utils/transactions/reclaim_nft";
 import * as api from "../../api";
+import  { Redirect } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -22,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
 export default function ReclaimNFTDialog(props) {
 	const nodeInfo = useContext(NodeInfoContext);
 	const classes = useStyles();
+    const [error, setError] = useState("");
 
 	const [data, setData] = useState({
 		name: props.token.name,
@@ -38,14 +40,36 @@ export default function ReclaimNFTDialog(props) {
 	const handleSend = async (event) => {
 		event.preventDefault();
 
-		const res = await reclaimNFT({
-			...data,
-			networkIdentifier: nodeInfo.networkIdentifier,
-			minFeePerByte: nodeInfo.minFeePerByte,
-		});
-		await api.sendTransactions(res.tx);
-		props.handleClose();
+		try {
+			const res = await reclaimNFT({
+                ...data,
+                networkIdentifier: nodeInfo.networkIdentifier,
+                minFeePerByte: nodeInfo.minFeePerByte,
+            });
+			const res2 = await api.sendTransactions(res.tx);
+			console.log("RES2 here");
+			console.log(res2)
+			props.handleClose();
+			console.log(res)
+			console.log("IM DONE HERE")
+
+		} catch (err){
+			console.log("I CAUGHT AN ERROR")
+			console.log(err)
+			setError(err);
+		}
 	};
+
+	console.log("ERROR")
+	console.log(error)
+	if (error != "") return (
+		<Redirect
+		to={{
+			pathname: "/error",
+			state: { name: error.name, msg: error.message }
+		}}
+		/>
+	)
 
 	return (
 		<Fragment>

@@ -26,6 +26,7 @@ export default function CreateNFTTokenDialog(props) {
 	const nodeInfo = useContext(NodeInfoContext);
 	const classes = useStyles();
 	const [imgData, setImgData] = useState("")
+	const [disableSend, setDisableSend] = useState(true)
 	const [data, setData] = useState({
 		name: "",
 		initValue: "",
@@ -99,6 +100,7 @@ export default function CreateNFTTokenDialog(props) {
 
 						<Editor
 						changeParent={handleImgChange}
+						changeDisableSend={setDisableSend}
 						/>
 
 						<br></br>
@@ -108,7 +110,7 @@ export default function CreateNFTTokenDialog(props) {
 				</DialogContent>
 
 				<DialogActions>
-					<Button onClick={handleSend}>Create Pix</Button>
+					<Button disabled={disableSend} onClick={handleSend}>Create Pix</Button>
 				</DialogActions>
 
 			</Dialog>

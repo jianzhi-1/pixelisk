@@ -23,7 +23,7 @@ const saveAs = (uri, filename) => {
 };
 
 export default function DrawingPanel(props) {
-	const { width, height, selectedColor, changeParent } = props;
+	const { width, height, selectedColor, changeParent, changeDisableSend } = props;
 
 	const panelRef = useRef();
 
@@ -51,6 +51,7 @@ export default function DrawingPanel(props) {
 					.then(canvas => {
 						var y = canvas.toDataURL('image/png', 1.0)
 						changeParent(y);
+						changeDisableSend(false);
 						return canvas;
 					});
 					e.stopPropagation();
@@ -68,6 +69,7 @@ export default function DrawingPanel(props) {
 					.then(canvas => {
 						var y = canvas.toDataURL('image/png', 1.0)
 						changeParent(y);
+						changeDisableSend(false);
 						return canvas;});
 					e.stopPropagation();
 					e.preventDefault();

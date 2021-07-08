@@ -16,9 +16,26 @@ export const sendTransactions = async (tx) => {
 		method: "POST",
 		headers: {"Content-Type": "application/json",},
 		body: JSON.stringify(tx),
+	})	.catch((err) => {
+	console.log("REACHED ERROR HERE")
+	console.log(err)
+	throw err})
+	.then((res) => {
+		return res.json()
 	})
-	.then((res) => res.json())
-	.then((res) => res.data);
+	.then((res) => {
+		if ("errors" in res){
+			if (res["errors"] != null && res["errors"].length > 0){
+				throw new Error(res["errors"][0].message)
+			}
+		}
+		return res.data;
+	})
+	.catch((err) => {
+		console.log("REACHED ERROR")
+		console.log(err)
+		throw err
+	});
 };
 
 export const fetchAllNFTTokens = async () => {

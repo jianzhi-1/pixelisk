@@ -47,10 +47,16 @@ export default function TransferNFTDialog(props) {
 				networkIdentifier: nodeInfo.networkIdentifier,
 				minFeePerByte: nodeInfo.minFeePerByte,
 			});
-			await api.sendTransactions(res.tx);
+			const res2 = await api.sendTransactions(res.tx);
+			console.log("RES2 here");
+			console.log(res2)
 			props.handleClose();
+			console.log(res)
+			console.log("IM DONE HERE")
 
 		} catch (err){
+			console.log("I CAUGHT AN ERROR")
+			console.log(err)
 			setError(err);
 		}
 

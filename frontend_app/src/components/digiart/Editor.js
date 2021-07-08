@@ -4,7 +4,7 @@ import { CompactPicker, CirclePicker } from "react-color";
 import DrawingPanel from "./DrawingPanel";
 
 export default function Editor(props) {
-	const { changeParent } = props;
+	const { changeParent, changeDisableSend } = props;
 
 	const [panelWidth, setPanelWidth] = useState(16);
 	const [panelHeight, setPanelHeight] = useState(16);
@@ -39,6 +39,7 @@ export default function Editor(props) {
 				height={panelHeight}
 				selectedColor={selectedColor}
 				changeParent={changeParent}
+				changeDisableSend={changeDisableSend}
 			/>
 		</div>
 	);
