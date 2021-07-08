@@ -27,6 +27,7 @@ import * as api from './api';
 import { NodeInfoContext, nodeInfoContextDefaultValue } from './context';
 
 import HomePage from './components/HomePage';
+import NotFoundPage from './components/NotFoundPage';
 import TransactionsPage from './components/TransactionsPage';
 import AccountPage from './components/AccountPage';
 import CreateAccountDialog from './components/dialogs/CreateAccountDialog';
@@ -183,6 +184,7 @@ function App() {
 
 							<Route path="/accounts/:address" component={AccountPage} />
 							<Route path="/transactions" component={TransactionsPage} />
+							<Route component={NotFoundPage}/>
 						</Switch>
 					</Container>
 
