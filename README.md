@@ -1,6 +1,4 @@
-<img style="float: right;" src="./images/logo50.png">
 # PixeLisk
-
 
 ![PixeLisk Logo](./images/logo50.png)
 
@@ -15,11 +13,14 @@ PixeLisk is submitted to LISK Hackathon 2021.
 ### The Collector's (Public) Address
 lskwwmtg88fyv7sg52t2r45sm7p4r8guk5wwq8bb5
 
-### installation
+### Installation and Running
+- npm install
+- npm start
+- node app.js
+- node index.js
 
-Credits:
-Aleks Popovic - I followed his blog to create the pixel art drawing portion of the front-end application
-https://aleksandarpopovic.com/How-to-build-a-Pixel-Art-Drawing-App-in-React/
+### Credits
+- Aleks Popovic - I followed [his blog](https://aleksandarpopovic.com/How-to-build-a-Pixel-Art-Drawing-App-in-React/) to create the pixel art drawing editor portion of the front-end application.
 
 MIT License (include in their license)
 - react-colors 
