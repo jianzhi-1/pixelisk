@@ -1,12 +1,16 @@
 # PixeLisk
 
+![PixeLisk Logo](./images/logo50.png)
+
 A blockchain platform for pixel artists; design your NFT, trade with the community and show off your collection!
 
-This application is submitted to LISK Hackathon 2021.
+PixeLisk is submitted to LISK Hackathon 2021.
 
 ### add some image
 
-### Judge's address
+![The Collector](./images/collector100.png)
+
+### The Collector's (Public) Address
 lskwwmtg88fyv7sg52t2r45sm7p4r8guk5wwq8bb5
 
 ### installation
