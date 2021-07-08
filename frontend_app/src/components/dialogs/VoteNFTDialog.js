@@ -7,6 +7,7 @@ import {
 	Button,
 	DialogActions,
 } from "@material-ui/core";
+import Alert from '@material-ui/lab/Alert';
 import { makeStyles } from "@material-ui/core/styles";
 import { NodeInfoContext } from "../../context";
 import { voteNFT } from "../../utils/transactions/vote_nft";
@@ -26,7 +27,7 @@ export default function VoteNFTDialog(props) {
 		name: props.token.name,
 		nftId: props.token.id,
 		recipientAddress: "",
-		fee: "",
+		fee: "1",
 		voteValue: "0",
 		passphrase: "",
 	});
@@ -51,26 +52,17 @@ export default function VoteNFTDialog(props) {
 	return (
 		<Fragment>
 			<Dialog open={props.open} onBackdropClick={props.handleClose}>
-				<DialogTitle id="alert-dialog-title">{"Vote Pix"}</DialogTitle>
+				<DialogTitle id="alert-dialog-title">{"Vote Pix - " + props.token.name}</DialogTitle>
 				<DialogContent>
 					<form className={classes.root} noValidate autoComplete="off">
 
 						<TextField
 						label="Token ID"
+						disabled={true}
 						value={data.nftId}
 						name="nftId"
-						onChange={handleChange}
 						fullWidth
 						/>
-
-						<TextField
-						label="Fee"
-						value={data.fee}
-						name="fee"
-						onChange={handleChange}
-						fullWidth
-						/>
-
 
 						<TextField
 						label="Vote Amount"
@@ -87,6 +79,10 @@ export default function VoteNFTDialog(props) {
 						onChange={handleChange}
 						fullWidth
 						/>
+
+						<br></br>
+						<Alert severity="warning">Voting for a Pix costs 1 LSK</Alert>
+
 					</form>
 				</DialogContent>
 				<DialogActions>

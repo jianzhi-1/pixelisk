@@ -7,6 +7,7 @@ import {
 	Button,
 	DialogActions,
 } from "@material-ui/core";
+import Alert from '@material-ui/lab/Alert';
 import { makeStyles } from "@material-ui/core/styles";
 import { NodeInfoContext } from "../../context";
 import { reclaimNFT } from "../../utils/transactions/reclaim_nft";
@@ -25,7 +26,7 @@ export default function ReclaimNFTDialog(props) {
 	const [data, setData] = useState({
 		name: props.token.name,
 		nftId: props.token.id,
-		fee: "",
+		fee: "1",
 		passphrase: "",
 	});
 
@@ -55,18 +56,10 @@ export default function ReclaimNFTDialog(props) {
 
 						<TextField
 						label="Token ID"
+                        disabled={true}
 						value={data.nftId}
 						name="nftId"
                         disabled={true}
-						onChange={handleChange}
-						fullWidth
-						/>
-
-						<TextField
-						label="Fee"
-						value={data.fee}
-						name="fee"
-						onChange={handleChange}
 						fullWidth
 						/>
 
@@ -77,6 +70,10 @@ export default function ReclaimNFTDialog(props) {
 						onChange={handleChange}
 						fullWidth
 						/>
+
+                        <br></br>
+						<Alert severity="warning">Reclaiming a Pix costs 1 LSK</Alert>
+
 
 					</form>
 				</DialogContent>

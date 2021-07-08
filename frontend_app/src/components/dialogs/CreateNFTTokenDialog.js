@@ -7,6 +7,7 @@ import {
 	Button,
 	DialogActions,
 } from "@material-ui/core";
+import Alert from '@material-ui/lab/Alert';
 import { makeStyles } from "@material-ui/core/styles";
 import { NodeInfoContext } from "../../context";
 import { createNFTToken } from "../../utils/transactions/create_nft_token";
@@ -29,7 +30,7 @@ export default function CreateNFTTokenDialog(props) {
 		name: "",
 		initValue: "",
 		minPurchaseMargin: "",
-		fee: "",
+		fee: "5",
 		passphrase: "",
 	});
 
@@ -65,7 +66,7 @@ export default function CreateNFTTokenDialog(props) {
 				<DialogContent>
 					<form className={classes.root} noValidate autoComplete="off">
 						<TextField
-						label="Name"
+						label="Pix Name"
 						value={data.name}
 						name="name"
 						onChange={handleChange}
@@ -89,14 +90,6 @@ export default function CreateNFTTokenDialog(props) {
 						/>
 
 						<TextField
-						label="Fee"
-						value={data.fee}
-						name="fee"
-						onChange={handleChange}
-						fullWidth
-						/>
-
-						<TextField
 						label="Passphrase"
 						value={data.passphrase}
 						name="passphrase"
@@ -107,6 +100,9 @@ export default function CreateNFTTokenDialog(props) {
 						<Editor
 						changeParent={handleImgChange}
 						/>
+
+						<br></br>
+						<Alert severity="warning">Creating a Pix costs 5 LSK</Alert>
 
 					</form>
 				</DialogContent>

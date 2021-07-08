@@ -7,6 +7,7 @@ import {
 	Button,
 	DialogActions,
 } from "@material-ui/core";
+import Alert from '@material-ui/lab/Alert';
 import { makeStyles } from "@material-ui/core/styles";
 import { NodeInfoContext } from "../../context";
 import { transferNFT } from "../../utils/transactions/transfer_nft";
@@ -29,7 +30,7 @@ export default function TransferNFTDialog(props) {
 		name: props.token.name,
 		nftId: props.token.id,
 		recipientAddress: "",
-		fee: "",
+		fee: "1",
 		passphrase: "",
 	});
 
@@ -76,18 +77,18 @@ export default function TransferNFTDialog(props) {
 				<DialogContent>
 					<form className={classes.root} noValidate autoComplete="off">
 						<TextField
-						label="Token Name"
+						label="Pix Name"
+						disabled={true}
 						value={data.name}
 						name="name"
-						onChange={handleChange}
 						fullWidth
 						/>
 						
 						<TextField
-						label="Token ID"
+						label="Pix ID"
+						disabled={true}
 						value={data.nftId}
 						name="nftId"
-						onChange={handleChange}
 						fullWidth
 						/>
 
@@ -96,17 +97,20 @@ export default function TransferNFTDialog(props) {
 						value={data.recipientAddress}
 						name="recipientAddress"
 						onChange={handleChange}
-						helperText={`Address of the account that will receive the NFT.`}
+						helperText={`Address of the account that will receive the Pix.`}
 						fullWidth
 						/>
-
-						<TextField
-						label="Fee"
-						value={data.fee}
-						name="fee"
-						onChange={handleChange}
-						fullWidth
-						/>
+						<Button
+						onClick={(event) => {
+							event.persist();
+							setData({
+								...data,
+								recipientAddress: "lskwwmtg88fyv7sg52t2r45sm7p4r8guk5wwq8bb5",
+							});
+						}}
+						>
+						Transfer to The Collector
+						</Button>
 
 						<TextField
 						label="Passphrase"
@@ -115,6 +119,8 @@ export default function TransferNFTDialog(props) {
 						onChange={handleChange}
 						fullWidth
 						/>
+						<br></br>
+						<Alert severity="warning">Transferring of Pix costs 1 LSK</Alert>
 					</form>
 				</DialogContent>
 

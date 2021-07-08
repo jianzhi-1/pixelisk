@@ -7,6 +7,7 @@ import {
   Button,
   DialogActions,
 } from "@material-ui/core";
+import Alert from '@material-ui/lab/Alert';
 import { makeStyles } from "@material-ui/core/styles";
 import { NodeInfoContext } from "../../context";
 import { purchaseNFTToken } from "../../utils/transactions/purchase_nft_token";
@@ -35,7 +36,7 @@ export default function PurchaseNFTTokenDialog(props) {
     name: props.token.name,
     nftId: props.token.id,
     purchaseValue: "",
-    fee: "",
+    fee: "1",
     passphrase: "",
   });
 
@@ -65,17 +66,17 @@ export default function PurchaseNFTTokenDialog(props) {
         <DialogContent>
           <form className={classes.root} noValidate autoComplete="off">
             <TextField
-              label="Token Name"
+              label="Pix Name"
+              disabled={true}
               value={data.name}
               name="name"
-              onChange={handleChange}
               fullWidth
             />
             <TextField
               label="Token ID"
+              disabled={true}
               value={data.nftId}
               name="nftId"
-              onChange={handleChange}
               fullWidth
             />
             <TextField
@@ -87,13 +88,6 @@ export default function PurchaseNFTTokenDialog(props) {
               fullWidth
             />
             <TextField
-              label="Fee"
-              value={data.fee}
-              name="fee"
-              onChange={handleChange}
-              fullWidth
-            />
-            <TextField
               label="Passphrase"
               value={data.passphrase}
               name="passphrase"
@@ -101,6 +95,11 @@ export default function PurchaseNFTTokenDialog(props) {
               fullWidth
             />
           </form>
+
+          <br></br>
+					<Alert severity="warning">Purchasing a Pix costs a tariff of 1 LSK</Alert>
+
+
         </DialogContent>
         <DialogActions>
           <Button onClick={handleSend}>Purchase Pix</Button>
