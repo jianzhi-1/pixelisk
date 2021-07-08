@@ -11,6 +11,7 @@ export const fetchAccountInfo = async (address) => {
 };
 
 export const sendTransactions = async (tx) => {
+  console.log(JSON.stringify(tx))
   return fetch("http://localhost:4000/api/transactions", {
     method: "POST",
     headers: {

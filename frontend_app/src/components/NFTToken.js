@@ -14,6 +14,7 @@ import { transactions, cryptography, Buffer } from "@liskhq/lisk-client";
 
 import PurchaseNFTTokenDialog from "./dialogs/PurchaseNFTTokenDialog";
 import TransferNFTDialog from "./dialogs/TransferNFTDialog";
+import VoteNFTDialog from "./dialogs/VoteNFTDialog";
 
 const useStyles = makeStyles((theme) => ({
 	propertyList: {
@@ -44,9 +45,10 @@ export default function NFTToken(props) {
 	const classes = useStyles();
 	const [openPurchase, setOpenPurchase] = useState(false);
 	const [openTransfer, setOpenTransfer] = useState(false);
+	const [openVote, setOpenVote] = useState(false);
 	const base32UIAddress = cryptography.getBase32AddressFromAddress(Buffer.from(props.item.ownerAddress, 'hex'), 'lsk').toString('binary');
 	
-	var base32CreatorAddress = null;
+	var base32CreatorAddress = "-";
 	if ("creatorAddress" in props.item && props.item["creatorAddress"] != null && props.item["creatorAddress"].length > 30){
 		base32CreatorAddress = cryptography.getBase32AddressFromAddress(Buffer.from(props.item.creatorAddress, 'hex'), 'lsk').toString('binary');
 	}
@@ -114,6 +116,8 @@ export default function NFTToken(props) {
 					</li>
 				)}
 				</dl>
+
+				{/*
 				<Typography variant="h6">NFT History</Typography>
 				<Divider />
 				{props.item.tokenHistory.map((base32UIAddress) => (
@@ -130,8 +134,52 @@ export default function NFTToken(props) {
 					</li>
 				</dl>
 				))}
+				*/}
 
 			</CardContent>
+
+			{props.judge?
+			<CardActions>
+				<>
+				<Button
+				size="small"
+				color="primary"
+				onClick={() => {setOpenVote(true);}}
+				>
+					Vote NFT
+				</Button>
+
+				<VoteNFTDialog
+				open={openVote}
+				handleClose={() => {setOpenVote(false);}}
+				token={props.item}
+				/>
+
+				</>
+				{/*
+				{props.item.minPurchaseMargin > 0 ? (
+				<>
+					<Button
+					size="small"
+					color="primary"
+					onClick={() => {setOpenPurchase(true);}}
+					>
+						Purchase NFT
+					</Button>
+
+					<PurchaseNFTTokenDialog
+					open={openPurchase}
+					handleClose={() => {setOpenPurchase(false);}}
+					token={props.item}
+					/>
+				</>
+				) : (
+				<Typography variant="body">Can't purchase this token</Typography>
+				)}
+				*/}
+			</CardActions>
+
+			:
 
 			<CardActions>
 				<>
@@ -170,6 +218,7 @@ export default function NFTToken(props) {
 				<Typography variant="body">Can't purchase this token</Typography>
 				)}
 			</CardActions>
+		}
 		</Card>
 	);
 }

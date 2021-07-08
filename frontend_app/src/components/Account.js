@@ -63,10 +63,12 @@ export default function Account(props) {
 	console.log("NFT TOKENS HERE")
 	console.log(nftTokens);
 
+	const judge = (base32UIAddress=="lskwwmtg88fyv7sg52t2r45sm7p4r8guk5wwq8bb5");
+
 	return (
 		<Container>
 			<Typography variant="h5">{base32UIAddress}</Typography>
-			{base32UIAddress=="lskwwmtg88fyv7sg52t2r45sm7p4r8guk5wwq8bb5"?
+			{judge?
 			<h1>The Judge</h1>
 			:
 			null}
@@ -90,9 +92,9 @@ export default function Account(props) {
 				{nftTokens.map((item) => (
 					<Grid item md={3}>
 						{(item.id in mapper)?
-						<NFTToken item={item} key={item.id} img={mapper[item.id]} minimum={true} />
+						<NFTToken item={item} key={item.id} img={mapper[item.id]} minimum={true} judge={judge} />
 						:
-						<NFTToken item={item} key={item.id} minimum={true}/>
+						<NFTToken item={item} key={item.id} minimum={true} judge={judge}/>
 						}
 					</Grid>
 				))}
