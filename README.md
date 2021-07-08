@@ -1,4 +1,6 @@
+<img style="float: right;" src="./images/logo50.png">
 # PixeLisk
+
 
 ![PixeLisk Logo](./images/logo50.png)
 
