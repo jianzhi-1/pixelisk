@@ -94,15 +94,19 @@ export default function Account(props) {
 			<Typography variant="h6">{"Collection"}</Typography>
 
 			<Grid container spacing={4}>
-				{nftTokens.map((item) => (
-					<Grid item md={3}>
+				{nftTokens.map((item) => {
+					if (item.creatorAddress == "" || !(item.id in mapper)) return null;
+					
+					return (
+					<Grid item md={4}>
 						{(item.id in mapper)?
 						<NFTToken item={item} key={item.id} img={mapper[item.id]} judge={judge} />
 						:
 						<NFTToken item={item} key={item.id} judge={judge}/>
 						}
-					</Grid>
-				))}
+					</Grid>);
+				
+				})}
 			</Grid>
 
 		</Container>

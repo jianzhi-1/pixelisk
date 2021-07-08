@@ -36,15 +36,20 @@ function HomePage() {
 	return (
 		<Fragment>
 			<Grid container spacing={4}>
-				{NFTAccounts.map((item) => (
+				{NFTAccounts.map((item) => {
+					
+					if (item.creatorAddress == "" || !(item.id in mapper)) return null;
+					
+					return (
 					<Grid item md={4}>
 						{(item.id in mapper)?
 						<NFTToken item={item} key={item.id} minimum={true} img={mapper[item.id]} />
 						:
 						<NFTToken item={item} key={item.id} minimum={true} />
 						}
-					</Grid>
-				))}
+					</Grid>);
+
+				})}
 			</Grid>
 		</Fragment>
 	);
