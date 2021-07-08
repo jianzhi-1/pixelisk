@@ -72,13 +72,14 @@ export default function NFTToken(props) {
 					}
 					
 				</li>
-
+				{!props.mini?
 				<li>
 					<b>Pix Value:</b> {transactions.convertBeddowsToLSK(props.item.value)} LSK
 					<dd></dd>
-				</li>
+				</li>:
+				null}
 
-				{!showDetails?
+				{(!props.mini && !showDetails)?
 				<li>
 					<dt>Owner</dt>
 					<Box 
@@ -98,7 +99,7 @@ export default function NFTToken(props) {
 				</li>
 				:null}
 
-				{!props.minimum?
+				{(!props.mini && !props.minimum)?
 				<div>
 
 				{showDetails?
@@ -217,6 +218,9 @@ export default function NFTToken(props) {
 
 			</CardContent>
 
+			{!props.mini?
+			<div>
+
 			{props.judge?
 			<CardActions>
 				<>
@@ -314,6 +318,10 @@ export default function NFTToken(props) {
 				<Typography variant="body">Can't purchase this token</Typography>
 				)}
 			</CardActions>
+		}
+		</div>
+		:
+		null
 		}
 		</Card>
 	);
