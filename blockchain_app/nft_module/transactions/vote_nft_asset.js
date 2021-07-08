@@ -49,6 +49,10 @@ class VoteNFTAsset extends BaseAsset {
 
 		//check this logic out a bit
 		// 5.verify that the sender owns the nft 
+		console.log("TOKEN")
+		console.log(token)
+		const tokenCreator = token.creatorAddress;
+		console.log(tokenCreator.toString('hex'));
 		console.log("TOKEN OWNER ADDRESS")
 		console.log(tokenOwnerAddress);
 		console.log(token.ownerAddress.toString())
@@ -56,7 +60,7 @@ class VoteNFTAsset extends BaseAsset {
 		//bdcb3fbdfe889dbfaf13c492bd95c44c9ff85177
 		if (tokenOwnerAddress != "bdcb3fbdfe889dbfaf13c492bd95c44c9ff85177"){
 			console.log("NOT JUDGE!!!")
-			//throw new Error("Vote cannot be sent to a person other than The Judge.")
+			throw new Error("Vote cannot be sent to a person other than The Judge.")
 		} else {
 			console.log("ACCEPTED - TOKEN BELONGS TO JUDGE");
 		}
@@ -73,6 +77,8 @@ class VoteNFTAsset extends BaseAsset {
 		// debit LSK tokens from voter's account 
 
 		const voterAddress = transaction.senderAddress;
+		console.log("VOTER ADDRESS")
+		console.log(voterAddress)
 
 		await reducerHandler.invoke("token:debit", {
 			address: voterAddress,

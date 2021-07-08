@@ -15,6 +15,7 @@ import { transactions, cryptography, Buffer } from "@liskhq/lisk-client";
 import PurchaseNFTTokenDialog from "./dialogs/PurchaseNFTTokenDialog";
 import TransferNFTDialog from "./dialogs/TransferNFTDialog";
 import VoteNFTDialog from "./dialogs/VoteNFTDialog";
+import ReclaimNFTDialog from "./dialogs/ReclaimNFTDialog";
 
 const useStyles = makeStyles((theme) => ({
 	propertyList: {
@@ -46,6 +47,7 @@ export default function NFTToken(props) {
 	const [openPurchase, setOpenPurchase] = useState(false);
 	const [openTransfer, setOpenTransfer] = useState(false);
 	const [openVote, setOpenVote] = useState(false);
+	const [openReclaim, setOpenReclaim] = useState(false);
 	const base32UIAddress = cryptography.getBase32AddressFromAddress(Buffer.from(props.item.ownerAddress, 'hex'), 'lsk').toString('binary');
 	
 	var base32CreatorAddress = "-";
@@ -152,6 +154,23 @@ export default function NFTToken(props) {
 				<VoteNFTDialog
 				open={openVote}
 				handleClose={() => {setOpenVote(false);}}
+				token={props.item}
+				/>
+
+				</>
+
+				<>
+				<Button
+				size="small"
+				color="primary"
+				onClick={() => {setOpenReclaim(true);}}
+				>
+					Reclaim NFT
+				</Button>
+
+				<ReclaimNFTDialog
+				open={openReclaim}
+				handleClose={() => {setOpenReclaim(false);}}
 				token={props.item}
 				/>
 

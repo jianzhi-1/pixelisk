@@ -5,6 +5,7 @@ const CreateNFTAsset = require("./transactions/create_nft_asset");
 const PurchaseNFTAsset = require("./transactions/purchase_nft_asset");
 const TransferNFTAsset = require("./transactions/transfer_nft_asset");
 const VoteNFTAsset = require("./transactions/vote_nft_asset");
+const ReclaimNFTAsset = require("./transactions/reclaim_nft_asset");
 
 // Extend from the base module to implement the NFT module
 class NFTModule extends BaseModule {
@@ -27,7 +28,7 @@ class NFTModule extends BaseModule {
       ownNFTs: [],
     },
   };
-  transactionAssets = [new CreateNFTAsset(), new PurchaseNFTAsset(), new TransferNFTAsset(), new VoteNFTAsset()];
+  transactionAssets = [new CreateNFTAsset(), new PurchaseNFTAsset(), new TransferNFTAsset(), new VoteNFTAsset(), new ReclaimNFTAsset()];
   actions = {
     // get all the registered NFT tokens from blockchain
     getAllNFTTokens: async () => getAllNFTTokensAsJSON(this._dataAccess),
