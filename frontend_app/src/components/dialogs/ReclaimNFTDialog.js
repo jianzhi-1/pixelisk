@@ -49,7 +49,7 @@ export default function ReclaimNFTDialog(props) {
 	return (
 		<Fragment>
 			<Dialog open={props.open} onBackdropClick={props.handleClose}>
-				<DialogTitle id="alert-dialog-title">{"Reclaim Digi - " + data.name}</DialogTitle>
+				<DialogTitle id="alert-dialog-title">{"Reclaim Pix - " + data.name}</DialogTitle>
 				<DialogContent>
 					<form className={classes.root} noValidate autoComplete="off">
 
@@ -81,7 +81,7 @@ export default function ReclaimNFTDialog(props) {
 					</form>
 				</DialogContent>
 				<DialogActions>
-					<Button onClick={handleSend}>Reclaim Digi</Button>
+					<Button onClick={handleSend}>Reclaim Pix</Button>
 				</DialogActions>
 			</Dialog>
 		</Fragment>

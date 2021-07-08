@@ -51,7 +51,7 @@ export default function VoteNFTDialog(props) {
 	return (
 		<Fragment>
 			<Dialog open={props.open} onBackdropClick={props.handleClose}>
-				<DialogTitle id="alert-dialog-title">{"Vote Digi"}</DialogTitle>
+				<DialogTitle id="alert-dialog-title">{"Vote Pix"}</DialogTitle>
 				<DialogContent>
 					<form className={classes.root} noValidate autoComplete="off">
 
@@ -90,7 +90,7 @@ export default function VoteNFTDialog(props) {
 					</form>
 				</DialogContent>
 				<DialogActions>
-					<Button onClick={handleSend}>Vote Digi</Button>
+					<Button onClick={handleSend}>Vote Pix</Button>
 				</DialogActions>
 			</Dialog>
 		</Fragment>

@@ -74,7 +74,7 @@ export default function NFTToken(props) {
 				</li>
 
 				<li>
-					<b>Digi value:</b> {transactions.convertBeddowsToLSK(props.item.value)} LSK
+					<b>Pix Value:</b> {transactions.convertBeddowsToLSK(props.item.value)} LSK
 					<dd></dd>
 				</li>
 
@@ -152,7 +152,7 @@ export default function NFTToken(props) {
 
 					{!props.minimum && (
 						<li>
-							<dt>Digi ID</dt>
+							<dt>Pix ID</dt>
 							<Box 
 							textOverflow="ellipsis"
 							component="div"
@@ -225,7 +225,7 @@ export default function NFTToken(props) {
 				color="primary"
 				onClick={() => {setOpenVote(true);}}
 				>
-					Vote Digi
+					Vote Pix
 				</Button>
 
 				<VoteNFTDialog
@@ -242,7 +242,7 @@ export default function NFTToken(props) {
 				color="primary"
 				onClick={() => {setOpenReclaim(true);}}
 				>
-					Reclaim Digi
+					Reclaim Pix
 				</Button>
 
 				<ReclaimNFTDialog
@@ -284,7 +284,7 @@ export default function NFTToken(props) {
 				color="primary"
 				onClick={() => {setOpenTransfer(true);}}
 				>
-					Transfer Digi
+					Transfer Pix
 				</Button>
 
 				<TransferNFTDialog
@@ -301,7 +301,7 @@ export default function NFTToken(props) {
 					color="primary"
 					onClick={() => {setOpenPurchase(true);}}
 					>
-						Purchase Digi
+						Purchase Pix
 					</Button>
 
 					<PurchaseNFTTokenDialog

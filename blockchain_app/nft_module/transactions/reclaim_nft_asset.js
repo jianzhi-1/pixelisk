@@ -35,9 +35,9 @@ class ReclaimNFTAsset extends BaseAsset {
 		
 		// 5. verify that the owner is the judge
 		if (tokenOwnerAddress.toString("hex") != "bdcb3fbdfe889dbfaf13c492bd95c44c9ff85177"){
-			throw new Error("Digi does not belong to the Collector.")
+			throw new Error("Pix does not belong to the Collector.")
 		} else {
-			console.log("The Collector owns the DigiArt");
+			console.log("The Collector owns the Pix");
 		}
 
 		console.log("TOKEN CREATOR")

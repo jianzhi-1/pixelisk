@@ -24,7 +24,7 @@ app.get('/', (req, res) => {
         //    "data":rows
         //})
     });
-	res.send('DigiArt Server')
+	res.send('PixeLisk Server')
 })
 
 app.get('/all', (req, res) => {

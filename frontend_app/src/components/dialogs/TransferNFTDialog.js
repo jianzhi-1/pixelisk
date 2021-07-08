@@ -70,7 +70,7 @@ export default function TransferNFTDialog(props) {
 		<Fragment>
 			<Dialog open={props.open} onBackdropClick={props.handleClose}>
 				<DialogTitle id="alert-dialog-title">
-					{"Transfer NFT"}
+					{"Transfer Pix"}
 				</DialogTitle>
 
 				<DialogContent>

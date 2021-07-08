@@ -61,7 +61,7 @@ export default function CreateNFTTokenDialog(props) {
 	return (
 		<Fragment>
 			<Dialog open={props.open} onBackdropClick={props.handleClose}>
-				<DialogTitle id="alert-dialog-title">{"Create Digi"}</DialogTitle>
+				<DialogTitle id="alert-dialog-title">{"Create Pix"}</DialogTitle>
 				<DialogContent>
 					<form className={classes.root} noValidate autoComplete="off">
 						<TextField
@@ -112,7 +112,7 @@ export default function CreateNFTTokenDialog(props) {
 				</DialogContent>
 
 				<DialogActions>
-					<Button onClick={handleSend}>Create Digi</Button>
+					<Button onClick={handleSend}>Create Pix</Button>
 				</DialogActions>
 
 			</Dialog>

@@ -105,7 +105,7 @@ function App() {
 								<img src={logo} width={40}/>
 							</IconButton>
 							
-							<Typography variant="h6">DigiArt</Typography>
+							<Typography variant="h6">PixeLisk</Typography>
 
 							<Link
 							color="inherit"
@@ -148,7 +148,7 @@ function App() {
 						<SpeedDialAction
 						key={'Create NFT'}
 						icon={<AddPhotoAlternateIcon />}
-						tooltipTitle={'Create NFT'}
+						tooltipTitle={'Create Pix'}
 						onClick={() => {
 							setOpenSpeedDial(false);
 							setOpenDialog('CreateNFTTokenDialog');

@@ -1,4 +1,4 @@
-# DigiArt
+# PixeLisk
 
 A blockchain platform for pixel artists; design your NFT, trade with the community and show off your collection!
 

@@ -30,7 +30,7 @@ export default function Editor(props) {
 
 	return (
 		<div id="editor" style={{backgroundColor:"#f2f3ff"}}>
-			<h3>Design your DigiArt below!</h3>
+			<h3>Design your Pix below!</h3>
 			<CompactPicker color={selectedColor} onChangeComplete={changeColor} />
 			<br></br>
 			<br></br>
