@@ -42,4 +42,4 @@ $ npm start
 
 Maya                       |  Edgeworth
 :-------------------------:|:-------------------------:
-![](./frontend_app/src/maya400.png)  |  ![](./frontend_app/src/edgeworth400.png)
+![](./frontend_app/src/public/maya400.png)  |  ![](./frontend_app/src/public/edgeworth400.png)
