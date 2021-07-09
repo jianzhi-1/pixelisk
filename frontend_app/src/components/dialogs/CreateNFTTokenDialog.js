@@ -29,8 +29,8 @@ export default function CreateNFTTokenDialog(props) {
 	const [disableSend, setDisableSend] = useState(true)
 	const [data, setData] = useState({
 		name: "",
-		initValue: "",
-		minPurchaseMargin: "",
+		initValue: "2",
+		minPurchaseMargin: "20",
 		fee: "5",
 		passphrase: "",
 	});
@@ -70,22 +70,6 @@ export default function CreateNFTTokenDialog(props) {
 						label="Pix Name"
 						value={data.name}
 						name="name"
-						onChange={handleChange}
-						fullWidth
-						/>
-
-						<TextField
-						label="Initial value"
-						value={data.initValue}
-						name="initValue"
-						onChange={handleChange}
-						fullWidth
-						/>
-
-						<TextField
-						label="Minimum Purchase Margin (0 - 100)"
-						value={data.minPurchaseMargin}
-						name="minPurchaseMargin"
 						onChange={handleChange}
 						fullWidth
 						/>
