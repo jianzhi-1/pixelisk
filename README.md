@@ -2,14 +2,14 @@
 
 ![PixeLisk Logo](./images/thumbnail.png)
 
-Ever wanted to design your own pixel-art NTF while watching it appreciate in value through votes by the online community? Join PixeLisk - a blockchain-powered evaluation system for pixel art lovers! 
+Ever wanted to design your own pixel-art NFT while watching it appreciate in value through votes by the online community? Join PixeLisk - a blockchain-powered evaluation system for pixel art lovers! 
 
 PixeLisk is submitted to HackOnLisk 2021.
 
 [Look at PixeLisk on Devpost!](https://devpost.com/software/pixelisk)
 [Watch a Demo on YouTube!](https://www.youtube.com/watch?v=rodgqOm8SXI)
 
-PixeLisk is a blockchain plaform where anyone can design and create a pixel artwork. Each pixel artwork is tagged to a non-fungible token (NTF). PixeLisk has a unique feature, which is that it allows the community to participate in judging and evaluating the value of the pixel artworks (called a "Pix") submitted.
+PixeLisk is a blockchain plaform where anyone can design and create a pixel artwork. Each pixel artwork is tagged to a non-fungible token (NFT). PixeLisk has a unique feature, which is that it allows the community to participate in judging and evaluating the value of the pixel artworks (called a "Pix") submitted.
 
 The three main features of PixeLisk are:
 
